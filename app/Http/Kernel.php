@@ -64,6 +64,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 		'ghilog' => \App\Http\Middleware\ghilog::class,
-		'kiemtraquyen' => \App\Http\Middleware\authentication::class,
+		'kiemtraquyen'  =>  \App\Http\Middleware\authentication::class,
     ];
 }

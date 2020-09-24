@@ -41,9 +41,29 @@ Route::get('/manhinhthemmoi', function () {
 
     // bổ sung 2 cột chucdanhid, phongbanid cho bảng user.
     // Viết màn hình cập nhật user (phân vào chức danh và phòng ban)
+    
+    // Đếm số lượng record
+    $countUser = DB::table("users")->where("id",1)->count();
+    
+    // Group by và các hàm tính toán
+    $max = DB::table("migrations")->sum("batch");
+    $max = DB::table("migrations")->avg("batch");
+    $max = DB::table("migrations")->max("batch");
+
+    // Kiểm tra tồn tại
+    $exists = DB::table("migrations")->where("batch",4)->exists();
+    $exists = DB::table("migrations")->where("batch",4)->doesntExist();
+
+    echo $exists?"tồn tại":"không tồn tại";exit;
 
     return view("manhinhthemmoi", ["aa" => "bbb"]);
 })->name("manhinhthemmoi");
+
+// Tạo bảng đơn hàng gồm (id,tên hàng, số lượng, 
+// đơn giá, thành tiền, ngày bán)
+// viết chức năng in danh sách theo ngày
+// viết chức năng in ra số tiền bán trong ngày, 
+// số đơn hàng bán trong ngày
 
 Route::get('/user/list', function () {
     $phongban = DB::table("phongban")->pluck("ten", "id");
